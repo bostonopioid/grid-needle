@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no'>
+    <meta http-equiv="Content-Security-Policy" content="
+      default-src 'self' https://* blob: data: 'unsafe-eval'; 
+      script-src-elem https://* 'sha256-NwPGqa9Mxa7ZIeBSPi4K97Vtt3uBWjwtJsUlZfeqG5E' 'sha256-ObkTaJ1h7lT97XBPLRXvlJ1IBQqFnLXFGLIKwu/rxwA=' 'sha256-mLp7ZpJKzMOrI7ubwGGLVNQC3MA8RQzJllKaMkuLCW8=' 'sha256-qwKhm3IVHW/S3LmZEXdnEVqe+v9siU7/q1R9tZigEPs=';
+      style-src   'self' https://fonts.googleapis.com 'unsafe-inline';
+      font-src    'self' data: https://fonts.gstatic.com;
+      media-src   *;
+      worker-src blob: ;
+      child-src blob: ;
+      connect-src  https://*.tiles.mapbox.com https://api.mapbox.com https://events.mapbox.com https://bostonopioid.github.io/discarded-needle/boston_needle.geojson https://bostonopioid.github.io/discarded-needle/data/opioid_related_ems_incidents_Boston.csv;
+            " />
+
+    <link rel="stylesheet" href="css/map.css">
+    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.5.0/mapbox-gl.js"></script>
+    <title>Discarded Needles in Boston</title>
+    <script src="lib/d3.js"></script>
+    <script src="lib/jquery-3.4.1.min.js"></script>
+    <script src="lib/jquery.waypoints.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="lib/animate.css">
+    <script src="lib/odometer.js"></script>
+    <link rel="stylesheet" href="css/odometer.css">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div id="preload-01"> </div>
+    <div id="preload-02"></div>
+    <div id="preload-03">
+    </div>
+    <div id="preload-04"></div>
+    <div id="preload-05"> </div>
+    <div id="preload-06"></div>
+    <div id="preload-07"> </div>
+    <div id="preload-08"></div>
+    <div id="preload-09"> </div>
+    <div id="preload-10"></div>
+
+
+    <div class="container-fluid" id="header">
+        <div class="title odometer hidden" id="odometer">
+            17,081
+        </div>
+        <div class="small" id="subtitle">
+            needles have been reported around Boston since 2015, a side effect of the opioid crisis gripping the city.
+        </div>
+
+        <div class="small" id="author-name">Story by Nick Stoico and Jordan Erb<br> Photos by Jordan Erb<br> Design and development by Szu Yu Chen<br></div>
+
+        <div id="arrow">
+            <div class="arrow-down"></div>
+
+
+        </div>
+    </div>
+    <div class="animated">
+
+        <div class="intro animated intro1-1" id="intro1"></div>
+
+
+        <div class="intro-col" id="pic1-1">
+
+            <p>
+                On a cool October morning, two men crouch down near a chain link fence along Melnea Cass Boulevard and
+                make a deal. One
+                of the men, younger, perhaps in his late 20s, rolls up the left sleeve of his fleece coat while the
+                other thumbs through
+                a handful of cash before stuffing it into his jacket pocket. Cars bustle past along the street.
+
+            </p>
+        </div>
+        <div class="divide"></div>
+        <div class="intro-col" id="pic1-2">
+
+            <p>About a dozen yards away, Domingos Darosa, a Roxbury native and community activist, walks through the
+                grass between the
+                sidewalk and the fence, his eyes scanning the ground for hypodermic needles. He’s wearing steel-toed
+                boots and white
+                latex gloves, and he carries a small red box with a clear plastic lid with an opening to drop the
+                needles through. He
+                picks up 10 needles in the first minute he’s there.
+
+            </p>
+        </div>
+
+        <div class="divide"></div>
+
+        <div class="intro-col" id="pic1-3">
+            <p>
+                The younger man, his head covered by a New England Patriots beanie, gets ready to shoot up nearby, and
+                the other stands
+                up and looks around. Darosa approaches, following the trail of needles as he picks them up one by one.
+            </p>
+
+        </div>
+
+        <div class="divide"></div>
+
+        <div class="intro-col" id="pic1-4">
+            <p>
+
+                “Be careful, guys,” Darosa says to the men as he picks up a plastic water bottle filled with used
+                syringes.
+                “There’s a bad batch going around.”
+
+            </p>
+
+        </div>
+
+        <div class="divide"></div>
+
+        <div class="intro-col" id="pic1-5">
+            <p>
+                The older man nods and reaches into his pockets. Darosa knows the drill: he walks closer and holds open
+                the red box as
+                the man drops two needles inside.
+            </p>
+
+        </div>
+
+        <div class="divide"></div>
+
+        <div class="intro-col" id="pic1-6">
+            <p>
+                This is all routine for Darosa and others in the community trying to keep as many needles off the ground
+                as they can.
+                They walk through city parks and playgrounds, under overpasses and along sidewalks, picking up what they
+                see and
+                emptying their full boxes into red kiosks scattered across the area for needles to be safely deposited.
+
+            </p>
+
+        </div>
+
+        <div class="divide"></div>
+
+        <div class="intro-col" id="pic1-7">
+            <p>
+                Darosa said he noticed a problem with discarded needles about eight years ago. Since then, he said, the
+                issue has
+                skyrocketed.
+
+            </p>
+
+        </div>
+
+        <div class="divide"></div>
+
+
+        <div class="intro-col" id="pic1-8">
+            <p>
+                311 data from the city of Boston corroborates this, showing that the number of requests for needle
+                pick-ups has steadily
+                increased over the past five years –– now totalling over 17,000. The needles are but a quantifier of a
+                bigger problem, a
+                numerable proxy for the larger topic at hand: the nation’s opioid crisis.
+
+
+
+            </p>
+
+        </div>
+
+        <div class="divide"></div>
+        <div class="divide"></div>
+
+
+        <div class="intro-col" id="pic1-9">
+            <p>
+                Darosa continues on his way, picking up more needles. Some are hidden beneath leaves that have fallen
+                from the tree
+                branches overhead. Others have the needle either bent or broken off, a sign of a conscious effort made
+                by people
+                suffering from drug addiction, Darosa says, to mitigate the spread of disease.
+
+            </p>
+
+        </div>
+
+        <div class="divide"></div>
+
+        <div class="intro-col" id="pic1-10">
+            <p>
+                He also picks up empty Narcan dispensers, the medication used to treat narcotic overdoses.
+
+                “Any time you see these,” Darosa says, “that means someone was brought back to life.”
+
+
+            </p>
+
+        </div>
+
+        <div class="divide"></div>
+
+    </div>
+
+    <div id="preload-11"> </div>
+    <div id="preload-12"></div>
+    <div id="preload-13"> </div>
+    <div id="preload-14"></div>
+    <div id="preload-15"> </div>
+    <div id="preload-16"></div>
+    <div id="preload-17"> </div>
+    <div id="preload-18"></div>
+    <div id="preload-19"> </div>
+    <div id="preload-20"></div>
+
+    <div class="container-fluid paragraph">
+
+        <div class="white-col" id="white-col1">
+            <h2>Residents Respond</h2>
+            <p>
+                Aside from Darosa, other Boston residents have also started taking matters into their own hands. Andrew
+                Brand, a computer
+                professional and South End resident who lives along Massachusetts Avenue, has started exploring the 311
+                data on his own
+                in an attempt to make sense of the issue. </br></br>
+
+                Brand said his interest in the needle collection data began as a way for him to practice creating
+                graphics and studying
+                the opioid crisis. Brand sought hard data, rather than anecdotal evidence, to show that the opioid
+                epidemic was
+                heightened in Roxbury and the South End.
+
+            </p>
+
+
+        </div>
+    </div>
+
+    <div id="heat-map-change">
+        <div class='container'>
+            <div id='map'></div>
+        </div>
+
+        <div class='column' id='map-change0'>
+            The 311 requests for needle collection show what Brand expected to be true –– that there is a higher
+            concentration of
+            calls coming from those two neighborhoods than elsewhere.
+        </div>
+
+        <div class="divide"></div>
+
+        <div class='column' id='map-change1'>
+            Each dot represents a 311 needle pickup request, and the dark red dots represent higher density of requests.
+        </div>
+        <div class="divide"></div>
+        <div class='invisible' id='map-change2'></div>
+
+        <div class='column' id='map-change3'>
+            The data itself has its limitations, though, Brand said. </br></br>
+            To begin with, the needles are only one quantifiable dimension of the real problem at hand: the opioid
+            crisis. Further,
+            the data doesn’t show how many used needles are actually on the streets –– it only reflects the calls made
+            to request
+            their removal.
+
+        </div>
+        <div class="divide"></div>
+        <div class='column' id='map-change4'>
+            “The needles are really one aspect of the problem. They’re the only (quantifiable) aspect of the problem
+            that I have
+            access to,” Brand said. “Really, I want the neighborhood to be cleaned up and go back to the way it was,
+            which was sort
+            of a normal neighborhood, albeit one next to the hospitals. It always had its share of homeless people, but
+            they didn’t
+            really cause any quality of life problems for the neighborhood.”
+
+
+        </div>
+        <div class="divide"></div>
+        <div class='column' id='map-change5'>
+            Brand isn’t the only Boston resident who’s had enough. </br></br>
+
+            Jennifer, another South End resident, had her first close call with used needles in the spring of
+            2018. While
+            playing with her son in Southwest Corridor Park, she noticed him bending towards something. As he went to
+            grab it, she
+            recognized the tell-tale clear syringe and pulled him away before he could pick up the used needle.
+
+        </div>
+        <div class="divide"></div>
+    </div>
+
+
+    <!-- <div class="container-fluid quote-container">
+        <div class="row quote one-line-quote"> “The needles are really one aspect of the problem.” </div>
+    </div> -->
+
+    <div class="animated">
+
+        <div class="intro animated intro2-1" id="intro2"></div>
+
+
+        <div class="intro-col" id="pic2-1">
+
+            <p>
+                Though that was the only needle her now 3-year-old has nearly gotten ahold of, Jennifer said she sees
+                discarded syringes
+                around Boston, and in parks and playgrounds, on a weekly basis.
+
+
+            </p>
+        </div>
+        <div class="divide"></div>
+        <div class="intro-col" id="pic2-2">
+
+            <p>The problem has become so severe that she now chooses to keep her son in indoor play areas, or takes him
+                to museums or
+                suburban parks. She has even started exploring possible solutions for the community at large to deal
+                with discarded
+                needles and the effects of the opioid crisis.
+
+
+
+            </p>
+        </div>
+
+        <div class="divide"></div>
+
+    </div>
+
+
+    <div class="container-fluid paragraph" id="paragraph2">
+
+        <div class="white-col animated" id="white-col2">
+
+            <p>
+
+                “I’m just a mom. I’m not an opioid expert, but clearly, the city is looking for solutions,” Jennifer said.
+                “No one knows
+                what to do, so I do have a list of things.”</br></br>
+
+                Among her ideas for possible solutions are distributing retractable needles rather than standard
+                syringes, and making
+                them brightly colored so pedestrians can easily spot them and dispose of them.</br></br>
+
+                After the incident with her son, Jennifer called the Boston Public Health Commission’s needle exchange, and
+                was unsettled
+                to find that they are not exchanging needles, but rather, distributing them without requiring an
+                exchange. As long as
+                they are giving out syringes, she said, they might as well be making them easier for the general public
+                to identify and
+                discard.</br></br>
+
+                As a first-time parent, Jennifer said she worries during the day that her son will be stuck by a needle
+                while playing. At
+                night, she worries that her husband, a surgeon at Boston Medical Center on Massachusetts Avenue –– part
+                of an area
+                otherwise known as the Methadone Mile –– isn’t safe when he leaves work.</br></br>
+
+                To Jennifer's family, the side effects of the opioid crisis have become too much to sustain. They are
+                now actively
+                seeking to relocate outside of Boston.</br></br>
+
+                “The city is being taken over,” Jennifer said. “If you were to have asked me four years ago if I wanted to
+                raise my son in
+                the city, I would say 100%. I love the city, I’m an extroverted person, I enjoy community, but now we’re
+                actively
+                looking to get out of the city for the sole reason of the drug-using community … It’s just too much at
+                this point.”
+
+            </p>
+
+            <div class="row quote animated"> “I’m just a mom. I’m not an opioid expert,</br>but clearly, the city is
+                looking for solutions.” </div>
+        </div>
+    </div>
+
+    <div class="animated">
+
+        <div class="intro animated intro3-1" id="intro3"></div>
+
+
+        <div class="intro-col" id="pic3-1">
+
+            <p>
+                In October 2014, the bridge to the
+                <a
+                    href="https://www.bostonglobe.com/metro/2019/09/11/long-island-walsh-touts-drug-recovery-plan/AKYwaiYlEjSnXA21BCNI6K/story.html">
+                    Long Island Recovery Campus </a>
+                was closed and torn down due to safety
+                concerns. For
+                years, the campus was a place where people struggling with addiction could go for shelter and recovery
+                services.
+            </p>
+        </div>
+        <div class="divide"></div>
+
+        <div class="intro-col" id="pic3-2">
+
+            <p>
+                In the years since that access was cut off, community members in Roxbury and the South End have noticed
+                a growing
+                presence of drug abuse in their neighborhoods, along with more needles littering the ground.
+            </p>
+        </div>
+        <div class="divide"></div>
+
+        <div class="intro-col" id="pic3-3">
+
+            <p>
+                But service providers, those who stand on the frontline of this issue as they try to help people
+                suffering from
+                addiction every day, say this epidemic isn’t anything new.
+            </p>
+        </div>
+        <div class="divide"></div>
+        <div class="intro-col" id="pic3-4">
+
+            <p>
+                “It’s new to people who weren’t really paying attention to the problem at the time, and now that it’s
+                all here in one
+                spot, you can’t not pay attention to it,” said Mario Chaparo, program director for the engagement center
+                and outreach
+                services at the Boston Public Health Commission.
+            </p>
+        </div>
+        <div class="divide"></div>
+        <div class="divide"></div>
+
+        <div class="intro-col" id="pic3-5">
+
+            <p>
+                “When it’s somebody that they know or somebody that they’re really close to, then they understand and
+                they might ask
+                ‘How can I help them?’ It’s sad to say, but most times it has to touch somebody in their own life for
+                them to get it and
+                realize we need to do something more.”
+            </p>
+        </div>
+        <div class="divide"></div>
+
+        <div class="intro-col" id="pic3-6">
+
+            <p>
+                One of BPHC’s main priorities is mitigating the spread of disease that can occur when people share and
+                reuse needles. To
+                combat this issue, the department gives out clean needles, as well as other items such as sterile wipes,
+                toothpaste,
+                soap and feminine hygiene products. While the program is called a needle exchange, people can still get
+                clean needles
+                without turning in used ones.
+            </p>
+        </div>
+        <div class="divide"></div>
+    </div>
+
+    <div class="container-fluid paragraph" id="paragraph3">
+
+        <div class="white-col animated" id="white-col3">
+            <h2>‘I would give out as many needles as someone needs for them to not get a disease.’</h2>
+            <p>
+
+
+                Some have criticized this strategy, arguing that the program is only putting more needles out into the
+                community. But
+                Chaparo says the department collects more syringes –– whether they are turned in or picked up off the
+                ground –– than it
+                hands out. He estimated that his team collects some 200 to 250 needles every day.</br></br>
+
+                “I would give out as many needles as someone needs for them to not get a disease,” he said. “Anywhere
+                that someone is
+                dropping a needle, of course (we’re concerned) if someone gets stuck. But when we think about the bigger
+                picture –– you
+                know, I just heard on the news about a new strain of HIV. There’s new strains of Hepatitis C, there’s
+                all these new
+                things that have come in. I’d rather keep giving out needles to lessen that harm.”</p>
+
+            </p>
+        </div>
+    </div>
+
+    <div class="animated">
+
+        <div class="intro animated  intro4-1" id="intro4"></div>
+
+
+        <div class="intro-col" id="pic4-1">
+
+            <p>
+                Chaparo said his department also distributes small containers for people to place their used syringes
+                in,
+                like the red
+                box Domingos carries with him when he’s collecting needles off the ground. When the box fills up, it is
+                turned in to the
+                department in exchange for more clean needles
+
+
+            </p>
+        </div>
+        <div class="divide"></div>
+        <div class="intro-col" id="pic4-2">
+
+            <p>
+                Another strategy has been the placement of large red kiosks around the city for depositing needles
+                safely.</br></br>
+                This move has
+                also drawn criticism, particularly with two kiosks placed near the Orchard Gardens K-8 School, which
+                sits a
+                short walk
+                from the intersection of Melnea Cass Boulevard and Massachusetts Avenue, part of the area known as
+                Methadone
+                Mile.
+
+            </p>
+        </div>
+
+        <div class="divide"></div>
+        <div class="intro-col" id="pic4-3">
+
+            <p>
+                Jennifer, for one, said the kiosks aren’t the answer –– especially not when placed in front of
+                schools.</br></br>
+
+                “Putting something like that next to a school, that’s not the solution,” Jennifer said. “It’s like saying a
+                person who’s
+                drunk is going to pick up all their stuff. They’re just not in the frame of mind.”
+
+            </p>
+        </div>
+
+        <div class="divide"></div>
+
+    </div>
+
+    <div class="container-fluid paragraph" id="paragraph4">
+
+        <div class="white-col animated" id="white-col4">
+            <h2>‘We’ve always been here’</h2>
+            <p>
+
+                The Orchard Gardens School has been dealing with the issue of littered needles for at least the past
+                four
+                years. In
+                2015, school nurse Sue Burchill designed a brochure to hand out to students in the K-8 school explaining
+                what to do when
+                they see a needle on the ground.</br></br>
+
+                “You learn to stop, drop and roll in school when there’s a fire,” she said in a recent interview. “Our
+                brochure says ‘If
+                you see a needle, stop, turn and tell an adult. If there’s no adults, call 311.’”</br></br>
+
+                The key point is for children to not pick up the needle themselves, but Burchill said she believes the
+                kiosks encourage
+                students to do precisely that.</br></br>
+
+                The brochure is written in three languages. The school has nearly 1,000 children, she said, and about
+                75%
+                are learning
+                English as a second language.</br></br></p>
+
+            <div class="col-img"><img src="img/brochure.png"></div>
+
+
+
+            <p> “We started the brochure and have been educating the students since 2015,” said Burchill, a lifelong
+                Boston resident.
+                “It’s 2019. We’ve gone to the mayor, we’ve gone to representatives in the neighborhood, we’ve
+                <a
+                    href="https://www.bostonglobe.com/metro/2018/12/18/fed-with-stepping-over-needles-walk-school-students-stage-protest/CojNHiqhDvV3qQGyIfdx7N/story.html">
+                    stood
+                    outside on the
+                    sidewalk</a> on Melnea Cass and Albany (Street) with signs. Nobody seemed to care until the South
+                End community, the wealthy
+                physicians and such, as needles started coming their way, that’s when they started paying attention.
+                That was in 2017.”</br></br>
+
+                “We don’t really have a voice,” she later added. “We are here, and we’ve always been here.”
+
+
+            </p>
+
+            <div class="row quote animated"> “We don’t really have a voice” </div>
+
+        </div>
+
+    </div>
+
+    <div class="animated">
+
+        <div class="intro animated intro5-1" id="intro5"></div>
+
+
+        <div class="intro-col" id="pic5-1">
+
+            <p>
+                311 data shows a high concentration of calls for needle pickups coming from the area surrounding the
+                school. Custodians walk the school
+                grounds
+                each morning
+                checking for needles and other drug-related litter before students arrive, Burchill said.
+
+
+            </p>
+        </div>
+        <div class="divide"></div>
+        <div class="intro-col" id="pic5-2">
+
+            <p>
+                One day last fall, she said several hundred pill capsules were discovered on the kindergarten
+                playground. In
+                November
+                2018,
+                <a
+                    href="https://www.boston25news.com/news/student-at-school-in-roxbury-pricked-by-needle-during-recess/880601015">a
+                    boy was pricked by a needle</a> during recess. Burchill said he had to undergo testing to rule out
+                any
+                infections
+                and is okay.
+
+            </p>
+        </div>
+
+        <div class="divide"></div>
+
+    </div>
+
+    <div class="container-fluid paragraph" id="paragraph5">
+
+        <div class="white-col animated" id="white-col5">
+            <h2>‘Well, it’s not adorable. It’s sickening.’</h2>
+            <p>
+
+                A short time later, a class of students was asked how the school could be made safer. The students
+                responded in words
+                and pictures. One student drew a picture of a boy in a yellow shirt and blue pants laying in a pile of
+                leaves with
+                several needles stuck to his body.</br></br>
+
+                The student wrote, “I would like people to come early in the morning to pick up all the needles so the
+                students will be
+                safe especially now because the leaves are falling off the trees and we can’t see the
+                needles.”</br></br>
+
+                “It’s adorable,” Burchill said. “Well, it’s not adorable. It’s sickening.”</br></br></p>
+
+            <div class="col-img"><img src="img/needle drawing.jpg"></div>
+
+
+        </div>
+
+    </div>
+
+    <footer> </footer>
+
+    <script src="js/map.js"></script>
+    <script src="script.js"></script>
+    <script>
+        setTimeout(function () {
+
+            document.querySelector("#odometer").style.visibility = "visible";
+
+            odometer.innerHTML = 17081;
+        }, 500);
+    </script>
+
+
+
+</body>
+
+</html>

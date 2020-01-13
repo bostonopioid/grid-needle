@@ -1,0 +1,712 @@
+
+/*pre-load img*/
+
+
+#preload-01 {
+	background: url(/discarded-needle/img/boston_street_first_pic.png) no-repeat -9999px -9999px;
+}
+
+#preload-02 {
+	background: url(/discarded-needle/img/domingo_pickup.png) no-repeat -9999px -9999px;
+}
+
+#preload-03 {
+	background: url(/discarded-needle/img/domingo_walk.png) no-repeat -9999px -9999px;
+}
+
+#preload-04 {
+	background: url(/discarded-needle/img/needle_bottle.png) no-repeat -9999px -9999px;
+}
+
+#preload-05 {
+	background: url(/discarded-needle/img/man_put_needle.png)no-repeat -9999px -9999px;
+}
+
+#preload-06 {
+	background: url(/discarded-needle/img/wikimedia_needle_on_ground.jpg) no-repeat -9999px -9999px;
+}
+
+#preload-07 {
+	background: url(/discarded-needle/img/domingo_pointing.jpg) no-repeat -9999px -9999px;
+}
+
+#preload-09 {
+	background: url(/discarded-needle/img/domingo_walkaway.png) no-repeat -9999px -9999px;
+}
+#preload-10 {
+	background: url(/discarded-needle/img/narcane.png) no-repeat -9999px -9999px;
+}
+
+#preload-11 {
+	background: url(/discarded-needle/img/condom_ground_cropped.png) no-repeat -9999px -9999px;
+}
+
+#preload-12 {
+	background: url(/discarded-needle/img/playground.png) no-repeat -9999px -9999px;
+}
+
+#preload-13 {
+	background: url(/discarded-needle/img/long_island.jpg) no-repeat -9999px -9999px;
+}
+
+#preload-14 {
+	background: url(/discarded-needle/img/bridge.png) no-repeat -9999px -9999px;
+}
+
+#preload-15 {
+	background: url(/discarded-needle/img/socks.png) no-repeat -9999px -9999px;
+}
+
+#preload-16 {
+	background: url(/discarded-needle/img/kit.jpg) no-repeat -9999px -9999px;
+}
+
+#preload-17 {
+	background: url(/discarded-needle/img/only_box.png) no-repeat -9999px -9999px;
+}
+
+#preload-18 {
+	background: url(/discarded-needle/img/needle_kiosks.png) no-repeat -9999px -9999px;
+}
+
+#preload-19 {
+	background: url(/discarded-needle/img/people_pickup_needle.png) no-repeat -9999px -9999px;
+}
+
+#preload-20 {
+	background: url(/discarded-needle/img/box_with_needles.png) no-repeat -9999px -9999px;
+}
+
+
+
+/* Layout */
+
+
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Noto Serif', serif;
+	-webkit-font-smoothing: antialiased;
+	color: rgba(20,20,20,0.8);
+	background-color: #f5f5f5;
+}
+
+p {
+	line-height: 30px;
+}
+
+#header {
+	height: 100vh;
+	position: relative;
+	overflow: hidden;
+	text-align: center;
+	background-image: url(/discarded-needle/img/header-pic.png);
+	background-repeat: no-repeat;
+	display: grid;
+	background-size: cover;
+	position: sticky;
+	position: -webkit-sticky;
+	top: 0;
+	z-index: -10;
+	grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+}
+
+
+#odometer {
+   visibility: hidden;
+   z-index: -50;
+}
+
+.title {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 800;
+    font-size: 9rem;
+    color: rgba(238, 74, 59, 0.8);
+    grid-column: 3/6;
+    grid-row: 3/4;
+}
+
+.small {
+	color: rgba(243, 235, 235, 0.9);
+}
+
+#subtitle {
+    font-size: 22px;
+    line-height: 2.4rem;
+    font-weight: 800;
+    grid-column: 3/6;
+    grid-row: 4/5;
+    align-self: flex-start;
+    justify-self: center;
+		
+}
+
+#author-name {
+font-size: 14px;
+    line-height: 1.2rem;
+    grid-column: 3/6;
+    grid-row: 5/6;
+    align-self: center;
+}
+
+
+#arrow {
+    grid-column: 3/6;
+    grid-row: 6/7;
+    margin: 0 auto;
+}
+
+.arrow-down {
+	width: 0;
+	border-left: 20px solid transparent;
+	border-right: 20px solid transparent;
+	border-top: 25px solid  rgba(243, 235, 235, 0.9);
+	;
+}
+
+.animated {
+	display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(6,1fr);
+}
+
+#totalNeedle, #opioid-ems {
+	font-size: 25px;
+	font-weight: 600;
+	color: #f5f5f5; 
+	grid-column: 2/7;
+    grid-row: 1/2;
+    align-self: center;
+    text-align: center;
+}
+
+svg {
+	grid-column: 2/7;
+    grid-row: 2/7;
+}
+
+
+.intro{
+	width: 100%;
+	height: 100vh;
+	background-repeat: no-repeat;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	position: sticky;
+	position: -webkit-sticky;
+	top: 0;
+	grid-column: 1/8;
+}
+
+.photo-credit, a {
+
+	color: rgba(255, 255, 255, 0.95)
+}
+
+.chart-description, .data-source{
+	
+	font-size:14px;
+	fill:rgba(255, 255, 255, 0.95);
+
+	}
+
+
+path, .tick {
+	color: #f5f5f5;
+}
+
+.intro-col {
+    z-index: 25;
+    padding: 18px 30px;
+    background-color: rgba(255, 255, 255, 0.95);
+    font-size: 18px;
+    grid-column: 3/6;
+    height: fit-content;
+}
+
+
+.intro-col>p>a, .white-col>p>a {color: rgba(238, 74, 59, 0.8)}
+
+
+
+#intro1, #intro2, #intro3, #intro4, #intro5 {
+	background-size: cover;
+	z-index: -10;
+	background-color: #333333;
+	transition: all 1s ease;
+	background-position: center;
+
+
+}
+
+.photo-credit{
+    padding-top: 90vh;
+    padding-right: 70%;
+}
+
+
+.quote {
+    position: relative;
+    margin: auto;
+    padding-top: 80px;
+    padding-bottom: 50px;
+    font-size: 25px;
+    font-style: italic;
+    line-height: 2.5rem;
+    text-align: center;
+}
+
+.axisLabel {
+	font-size: 12px;
+	font-family: 'Open Sans', sans-serif;
+	fill: #f5f5f5;
+}
+
+.axis {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 10px;
+}
+
+.paragraph {
+	width: 100%;
+	background-color: #f5f5f5;
+	background-repeat: no-repeat;
+	background-size: cover;
+	padding: 10vh 0;
+}
+
+h2 {
+	color: #bb2828;
+    font-size: 32px;
+    text-align: center;
+    margin: 60px 0;
+    font-weight: 600;
+    line-height: 3rem;
+}
+
+.white-col {
+	margin: 9px 250px;
+    padding: 15px 50px;
+    font-size: 20px;
+}
+
+.white-col > p {
+	margin: 0px 65px;
+    line-height: 2.5rem;
+}
+
+.container {
+	position: sticky;
+	position: -webkit-sticky;
+	top: 0;
+	z-index: -10;
+}
+
+.column {
+	margin-left: 30%;
+	margin-right: 30%;
+	position: relative;
+	line-height: 35px;
+	z-index: 25;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 18px 30px;
+    font-size: 18px;
+}
+
+#heat-map-chang, #map-zoom {
+	background-color: #f5f5f5;
+}
+
+#map {
+	height: 100vh;
+	width: 100%;
+	z-index: -20;
+	position: sticky;
+	position: -webkit-sticky;
+	top: 0;
+}
+
+.divide {
+	height: 120vh;
+	width: 100%;
+}
+
+#year-tag {
+	font-size: 4rem;
+	font-weight: 600;
+	z-index: 5;
+	padding: 10px 30px;
+	color: #333333;
+	text-shadow: 4px 4px #fafafa;
+	font-family: 'Open Sans', sans-serif;
+	position: absolute;
+	top: 10px;
+}
+
+.invisible {
+	visibility: hidden;
+	height: 800px;
+}
+
+.col-img {
+	text-align: center;
+	margin: 0 auto;
+}
+
+img {
+	margin: 0 auto;
+	width: 600px;
+}
+
+footer {
+	height: 15vh;
+	background-color: #333333;
+}
+
+.intro1-1 {
+	background-image: url(/discarded-needle/img/boston_street_first_pic.png);
+}
+
+.intro1-2 {
+	background-image: url(/discarded-needle/img/domingo_pickup.png);
+}
+
+.intro1-3 {
+	background-image: url(/discarded-needle/img/domingo_walk.png);
+}
+
+.intro1-4 {
+	background-image: url(/discarded-needle/img/needle_bottle.png);
+}
+
+.intro1-5 {
+	background-image: url(/discarded-needle/img/man_put_needle.png);
+}
+
+.intro1-6 {
+	background-image: url(/discarded-needle/img/wikimedia_needle_on_ground.jpg);
+}
+
+.intro1-7 {
+	background-image: url(/discarded-needle/img/domingo_pointing.jpg);
+}
+
+.intro1-9 {
+	background-image: url(/discarded-needle/img/domingo_walkaway.png);
+}
+
+.intro1-10 {
+	background-image: url(/discarded-needle/img/narcane.png);
+}
+
+.intro2-1 {
+	background-image: url(/discarded-needle/img/condom_ground_cropped.png);
+}
+
+.intro2-2 {
+	background-image: url(/discarded-needle/img/playground.png);
+}
+
+.intro3-1 {
+	background-image: url(/discarded-needle/img/long_island.jpg);
+}
+
+.intro3-2 {
+	background-image: url(/discarded-needle/img/bridge.png);
+}
+
+.intro3-5 {
+	background-image: url(/discarded-needle/img/socks.png);
+}
+
+.intro3-6 {
+	background-image: url(/discarded-needle/img/kit.jpg);
+}
+
+.intro4-1 {
+	background-image: url(/discarded-needle/img/only_box.png);
+}
+
+.intro4-2 {
+	background-image: url(/discarded-needle/img/needle_kiosks.png);
+}
+
+.intro5-1 {
+	background-image: url(/discarded-needle/img/people_pickup_needle.png);
+}
+
+.intro5-2 {
+	background-image: url(/discarded-needle/img/box_with_needles.png);
+}
+
+/* Safari 10.1+ */
+
+@media not all and (min-resolution:.001dpcm) { @media {
+
+    #odometer {
+   		visibility: visible;
+		}
+}}
+
+
+/*phone*/
+@media  (max-width:414px) {
+	
+	#preload-01 {
+	background: url(/discarded-needle/img/mobile/street.jpg) no-repeat -9999px -9999px;
+	}
+	
+	#preload-02 {
+	background: url(/discarded-needle/img/mobile/domingo_pickup.jpg) no-repeat -9999px -9999px;
+	}
+	
+	#preload-03 {
+	background: url(/discarded-needle/img/mobile/domingo_walk.jpg) no-repeat -9999px -9999px;
+	}
+	
+	#preload-04 {
+	background: url(/discarded-needle/img/mobile/needle_bottle.jpg) no-repeat -9999px -9999px;
+	}
+	
+	#preload-05 {
+	background: url(/discarded-needle/img/mobile/man_put_needle.jpg) no-repeat -9999px -9999px;
+	}
+	
+	#preload-06 {
+	background: url(/discarded-needle/img/mobile/wikimedia_needle_on_ground.jpg) no-repeat -9999px -9999px;
+	}
+	
+	#preload-07 {
+	background: url(/discarded-needle/img/mobile/domingo_pointing.jpg) no-repeat -9999px -9999px;
+	}
+
+	#preload-08 {
+	background: url(/discarded-needle/img/mobile/domingo_walkaway.jpg) no-repeat -9999px -9999px;
+	}
+	
+	#preload-09 {
+	background: url(/discarded-needle/img/mobile/narcane.jpg) no-repeat -9999px -9999px;
+	}
+	
+	#preload-10 {
+	background: url(/discarded-needle/img/mobile/condom_ground_cropped.jpg) no-repeat -9999px -9999px;
+	}
+	
+	#preload-11 {
+	background: url(/discarded-needle/img/mobile/playground.jpg) no-repeat -9999px -9999px;
+	}
+	
+	#preload-12 {
+	background: url(/discarded-needle/img/mobile/socks.jpg) no-repeat -9999px -9999px;
+	}
+
+
+	#preload-13 {
+	background: url(/discarded-needle/img/mobile/kit.jpg) no-repeat -9999px -9999px;
+	}
+
+	#preload-14 {
+	background: url(/discarded-needle/img/mobile/only_box.jpg) no-repeat -9999px -9999px;
+	}
+	
+	#preload-15 {
+	background: url(/discarded-needle/img/mobile/people_pickup_needle.jpg)no-repeat -9999px -9999px;
+	}
+	
+	#preload-16 {
+	background: url(/discarded-needle/img/mobile/box_with_needles.jpg)no-repeat -9999px -9999px;
+	}
+	
+	#preload-17 {
+	background: url(/discarded-needle/img/mobile/needle_kiosks.png) no-repeat -9999px -9999px;
+	}
+	
+
+            
+	#header {
+		background-image: url(/discarded-needle/img/mobile/mobileheader.jpg);
+	}
+
+	.title {
+    	font-size: 5rem;
+    	grid-column: 2/7;
+	}
+	
+	#subtitle {
+		font-size: 17px;
+    	line-height: 1.5em;
+    	grid-column: 2/7;
+		
+	
+	}
+		
+	#author-name{
+		
+		font-size: 10px;
+    	line-height: 1rem;
+		grid-column: 2/7;
+		align-self: auto;
+	
+	}
+	
+	#odometer {
+   		visibility: visible;
+		}
+
+
+	.intro-col {
+		width: 100%;
+		padding: 10px;
+		background-color: rgba(255, 255, 255, 0.95)
+	}
+
+	.photo-credit {
+	padding-right: 10%;
+	
+	}
+	
+	
+	p{
+	
+	line-height: 20px;
+    	font-size: 14px;
+	}
+
+	.divide {
+		height: 900px;
+	}
+
+	.white-col {
+		margin: 10px 0px;
+		padding: 15px 0px;
+	}
+	
+	.white-col > p {
+		margin: 0 30px;
+		line-height: 1.5rem;
+		
+	}
+
+	.column {
+		margin-left: 0%;
+		margin-right: 0%;
+		padding: 10px;
+    	font-size: 14px;
+    	line-height: 22px;
+	}
+
+	.chart-description, .data-source {
+	font-size: 10px;
+
+	}
+
+	#totalNeedle, #opioid-ems {
+	    line-height: 24px;
+		font-size: 20px;
+		
+	}
+
+	#year-tag {
+		font-size: 3rem;
+	}
+
+	h2 {
+		font-size: 28px;
+		margin: 60px 5px;
+		line-height: 2rem;
+	}
+
+	.quote {
+		font-size: 18px;
+    	line-height: 1.8rem;
+    	padding: 10vh 15%;
+	}
+
+	img {
+		width: 300px;
+	}
+
+	.intro1-1 {
+		background-image: url(/discarded-needle/img/mobile/street.jpg);
+	}
+
+	.intro1-2 {
+		background-image: url(/discarded-needle/img/mobile/domingo_pickup.jpg);
+	}
+
+	.intro1-3 {
+		background-image: url(/discarded-needle/img/mobile/domingo_walk.jpg);
+	}
+
+	.intro1-4 {
+		background-image: url(/discarded-needle/img/mobile/needle_bottle.jpg);
+	}
+
+	.intro1-5 {
+		background-image: url(/discarded-needle/img/mobile/man_put_needle.jpg);
+	}
+
+	.intro1-6 {
+		background-image: url(/discarded-needle/img/mobile/wikimedia_needle_on_ground.jpg);
+	}
+
+	.intro1-7 {
+		background-image: url(/discarded-needle/img/mobile/domingo_pointing.jpg);
+	}
+
+	.intro1-9 {
+		background-image: url(/discarded-needle/img/mobile/domingo_walkaway.jpg);
+	}
+
+	.intro1-10 {
+		background-image: url(/discarded-needle/img/mobile/narcane.jpg);
+	}
+
+	.intro2-1 {
+		background-image: url(/discarded-needle/img/mobile/condom_ground_cropped.jpg);
+	}
+
+	.intro2-2 {
+		background-image: url(/discarded-needle/img/mobile/playground.jpg);
+	}
+
+	.intro3-5 {
+		background-image: url(/discarded-needle/img/mobile/socks.jpg);
+	}
+
+	.intro3-6 {
+		background-image: url(/discarded-needle/img/mobile/kit.jpg);
+	}
+
+	.intro4-1 {
+		background-image: url(/discarded-needle/img/mobile/only_box.jpg);
+	}
+	
+	.intro4-2 {
+		background-image:url(/discarded-needle/img/mobile/needle_kiosks.png);
+	}
+
+	.intro5-1 {
+		background-image: url(/discarded-needle/img/mobile/people_pickup_needle.jpg);
+	}
+
+	.intro5-2 {
+		background-image: url(/discarded-needle/img/mobile/box_with_needles.jpg);
+	}
+}
+ 
+
+
+
+
+ 
+
+
