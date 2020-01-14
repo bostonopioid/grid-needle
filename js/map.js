@@ -85,9 +85,8 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoic2FicmluYW1vY2hpIiwiYSI6ImNrMWliZWZobjBqY2czb
 
 
     
-    var yearTag = d3.select(".container").append("div")
-        .attr("id", "year-tag");    
-
+    var yearTag = d3.select("#year-tag");
+    
     $content1.waypoint(function (direction) {
 
       if (direction == "down") { 
