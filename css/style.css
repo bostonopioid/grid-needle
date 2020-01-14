@@ -170,6 +170,12 @@ font-size: 14px;
 	;
 }
 
+.outer-wrapper {
+	display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: 1fr;
+}
+
 .wrapper {
 	display: grid;
     grid-template-columns: repeat(7, 1fr);
@@ -332,6 +338,7 @@ h2 {
 	position: sticky;
 	position: -webkit-sticky;
 	top: 0;
+	height: 100vh;
 }
 
 .divide {
